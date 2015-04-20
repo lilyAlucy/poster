@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="keywords" content="聚势云 聚势网络平台"> 
+	<meta name="description" content="聚势云 聚势网络平台">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>聚势云岗位招聘</title>
+	<style type="text/css">
+		* { padding: 0; margin: 0;}
+		html, body {width: 100%;}
+		body { font: 12px/1.5 "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;}
+		.clearfix:after {
+			content: "";
+			display: block;
+			visibility: hidden;
+			clear: both;
+			height: 0;
+			font-size: 0;
+		}
+		.container { width: 100%}
+		.panel-hd {
+			background-image:-webkit-linear-gradient(left, #b62858, #ee91b0);
+			background-image:linear-gradient(left, #b62858, #ee91b0);
+			height: 40px;
+			font: bold 14px "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+			line-height: 40px;
+			color: #fff;
+			text-align: center;
+		}
+		input {
+			padding: 3px 5px;
+		}
+		.row {
+			width: 100%;
+			padding: 15px 0 7px;
+		}
+		.row label {
+			float: left;
+			width: 25%;
+			line-height: 28px;
+			padding-right: 10px;
+			box-sizing: border-box;
+			text-align: right;
+		}
+		.row .col {
+			float: left;
+			width: 75%;
+			color: #f00;
+		}
+		.row .col input[type=text], .row .col input[type=number] {
+			width: 80%;
+			height: 22px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			margin-right: 4px;
+		}
+		.btn {
+			background-image:-webkit-linear-gradient(left, #b62858, #f6236b);
+			background-image:linear-gradient(left, #b62858, #f6236b);
+			padding: 3px 20px;
+			font: 14px "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+			line-height: 20px;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.tips {
+			text-align: center;
+			background: rgba(154,128,127,0.2);
+			border: 1px solid #933253;
+			position: absolute;
+			top: 50%;
+			left: -100%;
+			margin-top: -20px;
+			width: 100%;
+			height: 40px;
+			box-sizing: border-box;
+			color: #000;
+			line-height: 40px;
+			-webkit-transition: all .3s;
+			transition: all .3s;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="panel">
+			<div class="panel-hd">我要报名</div>
+			<div class="panel-bd">
+				<p style="padding: 5px; color: red;">以下带*号必填</p>
+				<form action="" id="myForm" name="myForm">
+					<div class="row clearfix">
+						<label for="userName">姓名</label>
+						<div class="col"><input type="text" id="userName" name="userName">*</div>
+					</div>
+
+					<div class="row clearfix">
+						<label for="sex">性别</label>
+						<div class="col"><input type="text" id="sex" name="sex">*</div>
+					</div>
+
+					<div class="row clearfix">
+						<label for="age">年龄</label>
+						<div class="col"><input type="text" id="age" name="age" min="0">*</div>
+					</div>
+
+					<div class="row clearfix">
+						<label for="workAge">工龄</label>
+						<div class="col"><input type="text" id="workAge" name="workAge" min="0">*</div>
+					</div>
+
+					<div class="row clearfix">
+						<label for="post">现岗位</label>
+						<div class="col"><input type="text" id="post" name="post">*</div>
+					</div>
+
+					<div class="row clearfix">
+						<label for="interestPost">感兴趣岗位</label>
+						<div class="col"><input type="text" id="interestPost" name="interestPost">*</div>
+					</div>
+
+					<div class="row clearfix">
+						<label for="tel">手机</label>
+						<div class="col"><input type="text" id="tel" name="tel">*</div>
+					</div>
+					
+					<div class="row clearfix" style="text-align: center;">
+						<input type="submit" id="btn" value="提交" class="btn">
+					</div>
+					
+				</form>
+
+				<div class="tips"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/1.11.1/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var $userName = $('#userName');
+			var $sex = $('#sex');
+			var $age = $('#age');
+			var $workAge = $('#workAge');
+			var $post = $('#post');
+			var $interestPost = $('#interestPost');
+			var $tel = $('#tel');
+			var $btn = $('#btn');
+			var $tips = $('.tips');
+
+			function tips($tips, msg, $element) {
+				$tips.html(msg).css({left: 0, opacity: 1});
+				$element.focus();
+				setTimeout(function(){
+					$tips.css({opacity: 0, left: "-100%"});
+				}, 1000);
+			}
+
+			$btn.on('click', function(e) {
+				var telReg = /^(?:\(?[0\+]?\d{1,3}\)?)[\s-]?(?:0|\d{1,4})[\s-]?(?:(?:13\d{9})|(?:\d{7,8}))$/;
+				var d = /\d/;
+
+				if($.trim($userName.val()) === '') {
+					tips($tips, '姓名不能为空', $userName);
+					return false;
+				}
+
+				else if($.trim($sex.val()) === '') {
+					tips($tips, '性别不能为空', $sex);
+					return false;
+				}
+
+				else if($.trim($age.val()) === '') {
+					tips($tips, '年龄不能为空', $age);
+					return false;
+				}
+				else if(!d.test($.trim($age.val()))) {
+					tips($tips, '年龄只能输入整数', $age);
+					return false;
+				}
+
+				else if($.trim($workAge.val()) === '') {
+					tips($tips, '工龄不能为空', $workAge);
+					return false;
+				}
+				else if(!d.test($.trim($workAge.val()))) {
+					tips($tips, '工龄只能输入整数', $workAge);
+					return false;
+				}
+
+				else if($.trim($post.val()) === '') {
+					tips($tips, '现岗位不能为空', $post);
+					return false;
+				}
+
+				else if($.trim($interestPost.val()) === '') {
+					tips($tips, '感兴趣岗位不能为空', $interestPost);
+					return false;
+				}
+
+				else if($.trim($tel.val()) === '') {
+					tips($tips, '手机号码不能为空', $tel);
+					return false;
+				}
+				else if(!telReg.test($.trim($tel.val()))) {
+					tips($tips, '手机号码格式不对', $tel);
+					return false;
+				}
+				else {
+					return true;
+					$tips.html('');
+
+				}
+
+			});
+
+
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+* { 
+	padding: 0; 
+	margin: 0;
+}
+html, body {
+	width: 100%; 
+	height: 100%;
+	/*overflow: hidden;*/
+}
+body { 
+	font: 12px/1.5 "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+	background: #fff;
+	overflow: auto;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+#test {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.left {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	margin-top: -41px;
+	width: 83px;
+	height: 83px;
+	background-image: url(img/left.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.right {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	margin-top: -41px;
+	width: 83px;
+	height: 83px;
+	background-image: url(img/right.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #000;
+}
+.nimei {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-transition: left .5s;
+}
+/*第一屏样式*/
+.first {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-image: url(img/img.jpg);
+}
+@media screen and (max-width: 320px) {
+	.first {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		background-image: url(img/small.jpg);
+	}
+}
+.second {
+	height: 100%;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 100%;
+}
+
+/*第二屏样式*/
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image:-webkit-linear-gradient(left, #b62858, #ee91b0);
+	background-image:linear-gradient(left, #b62858, #ee91b0);
+	width: 100%;
+	height: 40px;
+	font: bold 14px "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+	line-height: 40px;
+	color: #fff;
+	text-align: center;
+}
+
+#wrapper {
+	position:absolute; 
+	z-index:1;
+	top:40px; 
+	bottom:40px; 
+	left:0;
+	width:100%;
+	overflow:auto;
+}
+
+#scroller {
+	position:absolute; 
+	z-index:1;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	width:100%;
+	padding:0;
+}
+
+.row {
+	border-bottom: 1px solid #ddd;
+	padding: 3px 5px;
+}
+.row h2 {
+	width: 100%;
+	height: 30px;
+	font: bold 14px "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+	line-height: 30px;
+	color: #000;
+	overflow: hidden;
+}
+.row h2 span {
+	float: left;
+	margin-right: 10px;
+}
+.row .arrow {
+	display: block;
+	border: 6px solid transparent;
+	border-top: 10px solid #b62858;
+	width: 0;
+	height: 0px;
+	margin-top: 10px;
+	overflow: hidden;
+	-webkit-transform: rotate(0);
+	transform: rotate(0);
+	-webkit-transition: all .3s;
+}
+.row.on .arrow {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+	margin-top: 2px;
+
+}
+.item span {
+	width: 50%;
+	float: left;
+	line-height: 22px;
+}
+.detail {
+	display: none;
+}
+.detail p {
+	line-height: 20px;
+	color: #666;
+}
+.detail p span {
+	color: #222;
+}
+footer {
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #f2eaed;
+}
+footer a {
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	margin-left: -50px;
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	color: #fff;
+	background: #679fb6;
+	background-image:-webkit-linear-gradient(left, #b62858, #f6236b);
+	background-image:linear-gradient(left, #b62858, #f6236b);
+	border-radius: 5px;
+	text-decoration: none;
+	text-align: center;
+}
+
+/**
+ * Pull down styles
+ */
+#pullDown, #pullUp {
+	background:#fff;
+	height:40px;
+	line-height:40px;
+	padding:5px 10px;
+	border-bottom:1px solid #ccc;
+	font-weight:bold;
+	font-size:14px;
+	color:#888;
+}
+#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+	display:block; float:left;
+	width:40px; height:40px;
+	background:url(img/pull-icon@2x.png) 0 0 no-repeat;
+	-webkit-background-size:40px 80px; background-size:40px 80px;
+	-webkit-transition-property:-webkit-transform;
+	-webkit-transition-duration:250ms;	
+}
+#pullDown .pullDownIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+#pullUp .pullUpIcon  {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullDown.flip .pullDownIcon {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullUp.flip .pullUpIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+	background-position:0 100%;
+	-webkit-transform:rotate(0deg) translateZ(0);
+	-webkit-transition-duration:0ms;
+
+	-webkit-animation-name:loading;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+	from { -webkit-transform:rotate(0deg) translateZ(0); }
+	to { -webkit-transform:rotate(360deg) translateZ(0); }
+}

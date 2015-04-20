@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="keywords" content="聚势云 聚势网络平台"> 
+	<meta name="description" content="聚势云 聚势网络平台">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>聚势云岗位招聘</title>
+	<style type="text/css">
+		* { padding: 0; margin: 0;}
+		html, body {width: 100%;}
+		body { font: 12px/1.5 "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;}
+		.clearfix:after {
+			content: "";
+			display: block;
+			visibility: hidden;
+			clear: both;
+			height: 0;
+			font-size: 0;
+		}
+		.header {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-image:-webkit-linear-gradient(left, #b62858, #ee91b0);
+			background-image:linear-gradient(left, #b62858, #ee91b0);
+			width: 100%;
+			height: 40px;
+			font: bold 14px "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+			line-height: 40px;
+			color: #fff;
+			text-align: center;
+		}
+
+		#wrapper {
+			position:absolute; 
+			z-index:1;
+			top:40px; 
+			bottom:40px; 
+			left:0;
+			width:100%;
+			overflow:auto;
+		}
+
+		#scroller {
+			position:absolute; 
+			z-index:1;
+		/*	-webkit-touch-callout:none;*/
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			width:100%;
+			padding:0;
+		}
+
+		.row {
+			border-bottom: 1px solid #ddd;
+			padding: 3px 5px;
+		}
+		.row h2 {
+			width: 100%;
+			height: 30px;
+			font: bold 14px "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+			line-height: 30px;
+			color: #000;
+			overflow: hidden;
+		}
+		.row h2 span {
+			float: left;
+			margin-right: 10px;
+		}
+		.row .arrow {
+			display: block;
+			border: 8px solid transparent;
+			border-top: 10px solid #b62858;
+			width: 0;
+			height: 0px;
+			margin-top: 10px;
+			overflow: hidden;
+		}
+		.row.on .arrow {
+			border: 8px solid transparent;
+			border-bottom: 10px solid #b62858;
+			margin-top: 0;
+
+		}
+		.item span {
+			width: 50%;
+			float: left;
+			line-height: 22px;
+		}
+/*		.item span:first-child {
+			width: 50%;
+		}
+		.item span:last-child {
+			width: 20%;
+		}*/
+		.detail {
+			display: none;
+		}
+		.detail p {
+			line-height: 20px;
+			color: #666;
+		}
+		.detail p span {
+			color: #222;
+		}
+		footer {
+			width: 100%;
+			height: 40px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			background: #f2eaed;
+		}
+		footer a {
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			margin-left: -50px;
+			position: absolute;
+			top: 5px;
+			left: 50%;
+			color: #fff;
+			background: #679fb6;
+			background-image:-webkit-linear-gradient(left, #b62858, #f6236b);
+			background-image:linear-gradient(left, #b62858, #f6236b);
+			border-radius: 5px;
+			text-decoration: none;
+			text-align: center;
+		}
+
+		/**
+		 *
+		 * Pull down styles
+		 *
+		 */
+		#pullDown, #pullUp {
+			background:#fff;
+			height:40px;
+			line-height:40px;
+			padding:5px 10px;
+			border-bottom:1px solid #ccc;
+			font-weight:bold;
+			font-size:14px;
+			color:#888;
+		}
+		#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+			display:block; float:left;
+			width:40px; height:40px;
+			background:url(img/pull-icon@2x.png) 0 0 no-repeat;
+			-webkit-background-size:40px 80px; background-size:40px 80px;
+			-webkit-transition-property:-webkit-transform;
+			-webkit-transition-duration:250ms;	
+		}
+		#pullDown .pullDownIcon {
+			-webkit-transform:rotate(0deg) translateZ(0);
+		}
+		#pullUp .pullUpIcon  {
+			-webkit-transform:rotate(-180deg) translateZ(0);
+		}
+
+		#pullDown.flip .pullDownIcon {
+			-webkit-transform:rotate(-180deg) translateZ(0);
+		}
+
+		#pullUp.flip .pullUpIcon {
+			-webkit-transform:rotate(0deg) translateZ(0);
+		}
+
+		#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+			background-position:0 100%;
+			-webkit-transform:rotate(0deg) translateZ(0);
+			-webkit-transition-duration:0ms;
+
+			-webkit-animation-name:loading;
+			-webkit-animation-duration:2s;
+			-webkit-animation-iteration-count:infinite;
+			-webkit-animation-timing-function:linear;
+		}
+
+		@-webkit-keyframes loading {
+			from { -webkit-transform:rotate(0deg) translateZ(0); }
+			to { -webkit-transform:rotate(360deg) translateZ(0); }
+		}
+
+	</style>
+</head>
+<body>
+	<div class="header">岗位招聘</div>
+	<div id="wrapper">
+		<div id="scroller">
+			<div id="pullDown">
+				<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+			</div>
+			<!-- 列表区start -->
+			<div id="list">
+				<div class="row">
+					<h2 class="clearfix">
+						<span>产品字典项目经理</span>
+						<i class="arrow"></i>
+					</h2>
+					<div class="item clearfix">
+						<span>入职日期：2015-04-22</span>
+						<span>地点：杭州</span>
+						<span>人数：若干</span>
+					</div>
+					<div class="detail">
+						<p>
+							<span>部门：</span>产品中心
+						</p>
+						<p>
+							<span>岗位职责：</span><br />负责产品资料收集和字典编制
+						</p>
+						<p>
+							<span>适配岗位：</span><br />资料员，采购员，配料员
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<h2 class="clearfix">
+						<span>产品字典项目经理</span>
+						<i class="arrow"></i>
+					</h2>
+					<div class="item clearfix">
+						<span>入职日期：2015-04-22</span>
+						<span>地点：杭州</span>
+						<span>人数：若干</span>
+					</div>
+					<div class="detail">
+						<p>
+							<span>部门：</span>供应链中心供应链中心
+						</p>
+						<p>
+							<span>岗位职责：</span><br />负责产品资料收集和字典编制负责产品资料收集和字典编制负责产品资料收集和字典编制负责产品资料收集和字典编制负责产品资料收集和字典编制
+						</p>
+						<p>
+							<span>适配岗位：</span><br />资料员，采购员，配料员
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<h2 class="clearfix">
+						<span>产品字典项目经理</span>
+						<i class="arrow"></i>
+					</h2>
+					<div class="item clearfix">
+						<span>入职日期：2015-04-22</span>
+						<span>地点：杭州</span>
+						<span>人数：若干</span>
+					</div>
+					<div class="detail">
+						<p>
+							<span>部门：</span>产品中心
+						</p>
+						<p>
+							<span>岗位职责：</span><br />负责产品资料收集和字典编制
+						</p>
+						<p>
+							<span>适配岗位：</span><br />资料员，采购员，配料员
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<h2 class="clearfix">
+						<span>产品字典项目经理</span>
+						<i class="arrow"></i>
+					</h2>
+					<div class="item clearfix">
+						<span>入职日期：2015-04-22</span>
+						<span>地点：杭州</span>
+						<span>人数：若干</span>
+					</div>
+					<div class="detail">
+						<p>
+							<span>部门：</span>供应链中心供应链中心
+						</p>
+						<p>
+							<span>岗位职责：</span><br />负责产品资料收集和字典编制
+						</p>
+						<p>
+							<span>适配岗位：</span><br />资料员，采购员，配料员
+						</p>
+					</div>
+				</div>
+				
+			</div>
+			<!-- 列表区end -->
+
+			<div id="pullUp">
+				<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+			</div>
+		</div>
+		
+	</div>
+		
+	<footer>
+		<a href="form.html">我要报名</a>
+	</footer>
+
+	<script type="text/javascript" src="js/1.11.1/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+	<script type="text/javascript" src="js/iscroll.js"></script>
+	<script type="text/javascript">
+		var myScroll,
+			pullDownEl, pullDownOffset,
+			pullUpEl, pullUpOffset,
+			flag = true,
+			generatedCount = 2;//当前页
+
+		function ajax(cb) {//刷新获取更多数据
+			var tmpl = "";
+			$.ajax({
+				type: "get",
+				url: "data.txt",
+				data: {currentPage: generatedCount, prePage: 10},
+				dataType: "text",
+				success: function(m) {
+					var max = 3;
+					m = JSON.parse(m);
+					for(var i in m) {
+					tmpl +=	'<div class="row">'
+					+		'<h2 class="clearfix"><span>' + m[i].gw + '</span><i class="arrow"></i></h2>'
+					+		'<div class="item clearfix">'
+					+			'<span>入职日期：'+ m[i].date + '</span>'
+					+			'<span>地点：' + m[i].workplace + '</span>'
+					+			'<span>人数：' + m[i].num + '</span>'
+					+		'</div>'
+					+		'<div class="detail">'
+					+			'<p>'
+					+				'<span>部门：</span>' + m[i].bm
+					+			'</p>'
+					+			'<p>'
+					+				'<span>岗位职责：</span><br />' + m[i].workDetail
+					+			'</p>'
+					+			'<p>'
+					+				'<span>适配岗位：</span><br />' + m[i].other
+					+			'</p>'
+					+		'</div>'
+					+	'</div>';
+					};
+
+					if(cb && typeof cb === "function") cb(tmpl, max);
+
+				},
+				error: function(m) {
+					alert('数据加载失败');
+				}
+			});
+
+		}
+
+		function pullDownAction () {
+			window.location.reload();
+		}
+
+		function pullUpAction () {
+
+			if(flag) {
+				ajax(function(m, total) {
+					$('#list').append(m);
+
+					if(generatedCount == total) {//如果当前页是最后一页，则隐藏加载更多，不再发起请求
+						$('#pullUp').hide();
+						flag = false;
+					}
+					generatedCount++;
+
+					myScroll.refresh();		// Remember to refresh when contents are loaded (ie: on ajax completion)
+				});
+				
+			}
+
+		}
+
+		function loaded() {
+			pullDownEl = document.getElementById('pullDown');
+			pullDownOffset = pullDownEl.offsetHeight;
+			pullUpEl = document.getElementById('pullUp');	
+			pullUpOffset = pullUpEl.offsetHeight;
+			
+			myScroll = new iScroll('wrapper', {
+				useTransition: true,
+				topOffset: pullDownOffset,
+				onRefresh: function () {
+					if (pullDownEl.className.match('loading')) {
+						pullDownEl.className = '';
+						pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+					} else if (pullUpEl.className.match('loading')) {
+						pullUpEl.className = '';
+						pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+					}
+				},
+				onScrollMove: function () {
+                        if (this.y > 5 && !pullDownEl.className.match('flip')) {
+                                pullDownEl.className = 'flip';
+                                pullDownEl.querySelector('.pullDownLabel').innerHTML = '松开来加载上一页数据';
+                                this.minScrollY = 0;
+                        } else if (this.y < 5 && pullDownEl.className.match('flip')) {
+                                pullDownEl.className = '';
+                                pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉获取上一页数据';
+                                this.minScrollY = -pullDownOffset;
+                        } else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+                                pullUpEl.className = 'flip';
+                                pullUpEl.querySelector('.pullUpLabel').innerHTML = '松开来加载下一页数据';
+                                this.maxScrollY = this.maxScrollY;
+                        } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+                                pullUpEl.className = '';
+                                pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载下一页数据';
+                                this.maxScrollY = pullUpOffset;
+                        }
+                },
+				onScrollEnd: function () {
+					if (pullDownEl.className.match('flip')) {
+						pullDownEl.className = 'loading';
+						pullDownEl.querySelector('.pullDownLabel').innerHTML = '加载中...';				
+						pullDownAction();	// Execute custom function (ajax call?)
+					} else if (pullUpEl.className.match('flip')) {
+						pullUpEl.className = 'loading';
+						pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...';				
+						pullUpAction();	// Execute custom function (ajax call?)
+					}
+				}
+			});
+			
+			setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
+		}
+
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+
+		$('#list').on('tap', '.row', function() {
+			if(!$(this).hasClass('on')) {
+				$(this).addClass('on').find('.detail').slideDown(300);
+			}
+			else {
+				$(this).removeClass('on').find('.detail').slideUp(300);
+			}
+		});
+
+	</script>
+</body>
+</html>

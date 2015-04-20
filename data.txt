@@ -1,0 +1,9 @@
+[
+	{"gw": "产品经理1", "num": "1人", "date": "2015-05-04", "workplace": "杭州", "bm": "UI设计部", "workDetail": "需求分析，用户体验", "other": "无"},
+	{"gw": "产品经理2", "num": "1人", "date": "2015-05-04", "workplace": "杭州", "bm": "UI设计部", "workDetail": "需求分析，用户体验", "other": "无"},
+	{"gw": "产品经理3", "num": "1人", "date": "2015-05-04", "workplace": "杭州", "bm": "UI设计部", "workDetail": "需求分析，用户体验", "other": "无"},
+	{"gw": "产品经理4", "num": "1人", "date": "2015-05-04", "workplace": "杭州", "bm": "UI设计部", "workDetail": "需求分析，用户体验", "other": "无"},
+	{"gw": "产品经理5", "num": "1人", "date": "2015-05-04", "workplace": "杭州", "bm": "UI设计部", "workDetail": "需求分析，用户体验", "other": "无"},
+	{"gw": "产品经理6", "num": "1人", "date": "2015-05-04", "workplace": "杭州", "bm": "UI设计部", "workDetail": "需求分析，用户体验", "other": "无"},
+	{"gw": "产品经理7", "num": "1人", "date": "2015-05-04", "workplace": "杭州", "bm": "UI设计部", "workDetail": "需求分析，用户体验", "other": "无"}
+]
